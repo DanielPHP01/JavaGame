@@ -161,16 +161,16 @@ public class MainActivity extends AppCompatActivity {
         }
         if (currentQuestionPosition < questionsLists.size()) {
             selectedOptionByUser = "";
-            binding.option1.setBackgroundColor(Color.WHITE);
+            binding.option1.setBackgroundResource(R.drawable.round_back_white_stroke);
             binding.option1.setTextColor(Color.parseColor("#1F6BB8"));
 
-            binding.option2.setBackgroundColor(Color.WHITE);
+            binding.option2.setBackgroundResource(R.drawable.round_back_white_stroke);
             binding.option2.setTextColor(Color.parseColor("#1F6BB8"));
 
-            binding.option3.setBackgroundColor(Color.WHITE);
+            binding.option3.setBackgroundResource(R.drawable.round_back_white_stroke);
             binding.option3.setTextColor(Color.parseColor("#1F6BB8"));
 
-            binding.option4.setBackgroundColor(Color.WHITE);
+            binding.option4.setBackgroundResource(R.drawable.round_back_white_stroke);
             binding.option4.setTextColor(Color.parseColor("#1F6BB8"));
 
             binding.questions.setText((currentQuestionPosition + 1) + "/" + questionsLists.size());

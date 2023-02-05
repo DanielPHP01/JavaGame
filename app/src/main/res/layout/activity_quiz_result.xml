@@ -31,6 +31,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:padding="10dp"
             android:id="@+id/correct_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,6 +42,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:padding="10dp"
             android:id="@+id/in_correct_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

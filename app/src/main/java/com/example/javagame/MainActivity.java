@@ -2,6 +2,7 @@ package com.example.javagame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     selectedOptionByUser = binding.option1.getText().toString();
                     binding.option1.setBackgroundColor(Color.RED);
                     binding.option1.setTextColor(Color.WHITE);
+
                     revealAnswer();
                     questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
                 }
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option1.getText().toString();
+                    selectedOptionByUser = binding.option2.getText().toString();
                     binding.option2.setBackgroundColor(Color.RED);
                     binding.option2.setTextColor(Color.WHITE);
 
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option1.getText().toString();
+                    selectedOptionByUser = binding.option3.getText().toString();
                     binding.option3.setBackgroundColor(Color.RED);
                     binding.option3.setTextColor(Color.WHITE);
 
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option1.getText().toString();
+                    selectedOptionByUser = binding.option4.getText().toString();
                     binding.option4.setBackgroundColor(Color.RED);
                     binding.option4.setTextColor(Color.WHITE);
 
@@ -104,29 +106,30 @@ public class MainActivity extends AppCompatActivity {
             final String getAnswer = questionsLists.get(i).getAnswer();
 
             if (getUserSelectedAnswer.equals(getAnswer)) {
-                correctAnswers = correctAnswers + 1;
+                correctAnswers++;
             }
         }
         return correctAnswers;
     }
 
     private int getInCorrectAnswer() {
-        int correctAnswers = 0;
+        int correctInAnswers = 0;
 
         for (int i = 0; i < questionsLists.size(); i++) {
             final String getUserSelectedAnswer = questionsLists.get(i).getUserSelectedAnswer();
             final String getAnswer = questionsLists.get(i).getAnswer();
 
             if (!getUserSelectedAnswer.equals(getAnswer)) {
-                correctAnswers = correctAnswers + 1;
+                correctInAnswers++;
             }
         }
-        return correctAnswers;
+        return correctInAnswers;
     }
+
     private void initBank() {
         QuestionsBank questionsBank = new QuestionsBank();
-        questionsLists = new ArrayList<>(questionsBank.getQuestions());
-        binding.questions.setText((currentQuestionPosition+1) + "/" + questionsLists.size());
+        questionsLists = questionsBank.getQuestions();
+        binding.questions.setText((currentQuestionPosition + 1) + "/" + questionsLists.size());
         binding.question.setText(questionsLists.get(0).getQuestion());
         binding.option1.setText(questionsLists.get(0).getOption1());
         binding.option2.setText(questionsLists.get(0).getOption2());
@@ -166,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void changeNextQuestions() {
         currentQuestionPosition++;
 
@@ -187,13 +191,12 @@ public class MainActivity extends AppCompatActivity {
             binding.option4.setTextColor(Color.parseColor("#1F6BB8"));
 
 
-            binding.questions.setText((currentQuestionPosition +1) + "/" + questionsLists.size());
+            binding.questions.setText((currentQuestionPosition + 1) + "/" + questionsLists.size());
             binding.question.setText(questionsLists.get(currentQuestionPosition).getQuestion());
             binding.option1.setText(questionsLists.get(currentQuestionPosition).getOption1());
             binding.option2.setText(questionsLists.get(currentQuestionPosition).getOption2());
             binding.option3.setText(questionsLists.get(currentQuestionPosition).getOption3());
             binding.option4.setText(questionsLists.get(currentQuestionPosition).getOption4());
-
         } else {
             getMove();
         }

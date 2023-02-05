@@ -21,8 +21,8 @@ public class QuizResultActivity extends AppCompatActivity {
         final int getCorrectAnswers = getIntent().getIntExtra("correct",0);
         final int getInCorrectAnswers = getIntent().getIntExtra("incorrect",0);
 
-        binding.correctAnswer.setText(String.valueOf(getCorrectAnswers));
-        binding.inCorrectAnswer.setText(String.valueOf(getInCorrectAnswers));
+        binding.correctAnswer.setText(String.valueOf(("Correct answers - " + getCorrectAnswers)));
+        binding.inCorrectAnswer.setText(String.valueOf(("Incorrect answers - " + getInCorrectAnswers)));
 
         binding.startAgain.setOnClickListener(new View.OnClickListener() {
             @Override

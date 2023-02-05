@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JavaGame</string>
+    <string name="try_again">Try Again</string>
+    <string name="result">Result</string>
 </resources>

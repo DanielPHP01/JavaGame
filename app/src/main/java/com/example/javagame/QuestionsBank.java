@@ -38,8 +38,6 @@ public class QuestionsBank {
                 "9 players", "11 players", "5 players", "4 players",
                 "9 players", "");
 
-
-
         questionsLists.add(question1);
         questionsLists.add(question2);
         questionsLists.add(question3);
@@ -50,7 +48,6 @@ public class QuestionsBank {
         questionsLists.add(question8);
         questionsLists.add(question9);
         questionsLists.add(question10);
-
 
         return questionsLists;
     }

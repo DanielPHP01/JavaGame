@@ -1,17 +1,15 @@
 package com.example.javagame;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.javagame.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,69 +29,54 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         initBank();
 
-        binding.option1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option1.getText().toString();
-                    binding.option1.setBackgroundColor(Color.RED);
-                    binding.option1.setTextColor(Color.WHITE);
+        binding.option1.setOnClickListener(v -> {
+            if (selectedOptionByUser.isEmpty()) {
+                selectedOptionByUser = binding.option1.getText().toString();
+                binding.option1.setBackgroundColor(Color.RED);
+                binding.option1.setTextColor(Color.WHITE);
 
-                    revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
-                }
+                revealAnswer();
+                questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
             }
         });
 
-        binding.option2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option2.getText().toString();
-                    binding.option2.setBackgroundColor(Color.RED);
-                    binding.option2.setTextColor(Color.WHITE);
+        binding.option2.setOnClickListener(v -> {
+            if (selectedOptionByUser.isEmpty()) {
+                selectedOptionByUser = binding.option2.getText().toString();
+                binding.option2.setBackgroundColor(Color.RED);
+                binding.option2.setTextColor(Color.WHITE);
 
-                    revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
-                }
+                revealAnswer();
+                questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
             }
         });
 
-        binding.option3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option3.getText().toString();
-                    binding.option3.setBackgroundColor(Color.RED);
-                    binding.option3.setTextColor(Color.WHITE);
+        binding.option3.setOnClickListener(v -> {
+            if (selectedOptionByUser.isEmpty()) {
+                selectedOptionByUser = binding.option3.getText().toString();
+                binding.option3.setBackgroundColor(Color.RED);
+                binding.option3.setTextColor(Color.WHITE);
 
-                    revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
-                }
+                revealAnswer();
+                questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
             }
         });
 
-        binding.option4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedOptionByUser.isEmpty()) {
-                    selectedOptionByUser = binding.option4.getText().toString();
-                    binding.option4.setBackgroundColor(Color.RED);
-                    binding.option4.setTextColor(Color.WHITE);
+        binding.option4.setOnClickListener(v -> {
+            if (selectedOptionByUser.isEmpty()) {
+                selectedOptionByUser = binding.option4.getText().toString();
+                binding.option4.setBackgroundColor(Color.RED);
+                binding.option4.setTextColor(Color.WHITE);
 
-                    revealAnswer();
-                    questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
-                }
+                revealAnswer();
+                questionsLists.get(currentQuestionPosition).setUserSelectedAnswer(selectedOptionByUser);
             }
         });
-        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedOptionByUser.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Please select", Toast.LENGTH_SHORT).show();
-                } else {
-                    changeNextQuestions();
-                }
+        binding.nextBtn.setOnClickListener(v -> {
+            if (selectedOptionByUser.isEmpty()) {
+                Toast.makeText(MainActivity.this, "Please select", Toast.LENGTH_SHORT).show();
+            } else {
+                changeNextQuestions();
             }
         });
     }
@@ -126,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         return correctInAnswers;
     }
 
+    @SuppressLint("SetTextI18n")
     private void initBank() {
         QuestionsBank questionsBank = new QuestionsBank();
         questionsLists = questionsBank.getQuestions();
@@ -135,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         binding.option2.setText(questionsLists.get(0).getOption2());
         binding.option3.setText(questionsLists.get(0).getOption3());
         binding.option4.setText(questionsLists.get(0).getOption4());
-
     }
 
     @Override
@@ -189,7 +172,6 @@ public class MainActivity extends AppCompatActivity {
 
             binding.option4.setBackgroundColor(Color.WHITE);
             binding.option4.setTextColor(Color.parseColor("#1F6BB8"));
-
 
             binding.questions.setText((currentQuestionPosition + 1) + "/" + questionsLists.size());
             binding.question.setText(questionsLists.get(currentQuestionPosition).getQuestion());
